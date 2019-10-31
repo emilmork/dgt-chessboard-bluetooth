@@ -1,0 +1,15 @@
+{
+  "name": "dgt-chess",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emil Mork <=>",
+  "license": "MIT",
+  "dependencies": {
+    "buffer-splice": "^1.0.0",
+    "node-bluetooth": "^1.2.6"
+  }
+}
