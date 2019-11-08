@@ -1,6 +1,10 @@
-const DGTConnectionBT = require("./DGTConnectionBT");
-const connection = new DGTConnectionBT();
+const DGTBoard = require("./Board");
+const board = new DGTBoard();
 
-connection.on("data", data => {
+board.on("data", data => {
   console.log(data);
+});
+
+board.on("move", move => {
+  console.log(move);
 });

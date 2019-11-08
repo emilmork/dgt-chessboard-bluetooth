@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "buffer-splice": "^1.0.0",
+    "chess.js": "^0.10.2",
     "node-bluetooth": "^1.2.6"
   }
 }
