@@ -9,18 +9,19 @@ const pieces = {
   "07": "p",
   "08": "r",
   "09": "n",
-  "10": "b",
-  "11": "k",
-  "12": "q"
+  "0a": "b",
+  "0b": "k",
+  "0c": "q"
 };
 
 function parseBoardDump(data) {
-  [...Array(8).keys()]
+  return [...Array(8).keys()]
     .map(i =>
       data
+        .substring(6)
         .substring(i * 16, (i + 1) * 16)
-        .replace(/\d{2}/g, match => pieces[match])
-        .replace(/(?<!_)_+(?!_)/g, match => match.length.toString())
+        .replace(/.{2}/g, match => pieces[match])
+        .replace(/_+/g, match => match.length.toString())
     )
     .join("/");
 }

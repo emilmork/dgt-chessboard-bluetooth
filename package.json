@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Emil Mork <=>",
   "license": "MIT",
@@ -13,5 +13,8 @@
     "chess.js": "^0.10.2",
     "node-bluetooth": "^1.2.6",
     "ws": "^7.2.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }

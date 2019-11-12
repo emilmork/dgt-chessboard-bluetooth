@@ -34,6 +34,9 @@ function DGTBTConnection() {
 
   function init() {
     dgtConnection.on("connected", con => {
+      // Reset buffer
+      _self._buffer = Buffer.alloc(0);
+
       if (!_self.timer) {
         _self.timer = setInterval(() => {
           dgtConnection.write(

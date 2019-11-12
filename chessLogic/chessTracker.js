@@ -1,3 +1,5 @@
+const Chess = require("chess.js").Chess;
+
 function updateGame(game, observation) {
   return (
     observationMatchesPosition(observation, game.fen()) ||
@@ -54,4 +56,4 @@ function copyGame(game) {
   return copy;
 }
 
-module.exports = updateGame;
+module.exports = { updateGame, observationMatchesPosition };

@@ -1,4 +1,4 @@
-const WebSocket = require("ws");
+//const WebSocket = require("ws");
 
 // const SERVER_URI = process.env.SOCKET_SERVER_URI;
 // if (!SERVER_URI) {
@@ -10,7 +10,7 @@ const WebSocket = require("ws");
 // const board = new DGTBoard();
 
 // const socket = new WebSocket(SERVER_URI);
-// socket.on("open", connection => {
+// socket.on("open", connection => {i
 //   board.on("data", data => {
 //     connection.send(data);
 //   });
@@ -22,7 +22,7 @@ const getGame = require("./chessLogic/game");
 
 board.on("data", data => {
   const currentGame = getGame(data);
-  console.log(currentGame);
+  console.log(currentGame.pgn());
 });
 
 process.on("uncaughtException", err => {
