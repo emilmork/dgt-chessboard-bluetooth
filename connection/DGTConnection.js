@@ -86,6 +86,7 @@ function DGTConnection() {
 
 DGTConnection.prototype.write = function(message) {
   if (!this.connection) return;
+
   this.connection.write(message, () => void 0);
 };
 

@@ -1,4 +1,4 @@
-export function updateGame(game, observation) {
+function updateGame(game, observation) {
   return (
     observationMatchesPosition(observation, game.fen()) ||
     tryGotoState(game, getMatchingChild(game, observation)) ||
@@ -53,3 +53,5 @@ function copyGame(game) {
   copy.load_pgn(game.pgn());
   return copy;
 }
+
+module.exports = updateGame;

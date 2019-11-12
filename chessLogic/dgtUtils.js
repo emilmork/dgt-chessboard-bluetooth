@@ -14,7 +14,7 @@ const pieces = {
   12: "q"
 };
 
-export function parseBoardDump(data) {
+function parseBoardDump(data) {
   [...Array(8).keys()]
     .map(i =>
       data
@@ -25,3 +25,5 @@ export function parseBoardDump(data) {
     )
     .join("/");
 }
+
+module.exports = parseBoardDump;
