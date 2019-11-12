@@ -4,30 +4,18 @@
 
 ```js
 // server.js
-const DGTConnectionBT = require("./DGTConnectionBT");
-const connection = new DGTConnectionBT();
-
-connection.on("data", data => {
-  console.log(data);
+board.on("data", data => {
+  const currentGame = getGame(data);
+  console.log(currentGame.pgn());
 });
 ```
 
 will output
 ```js
-86004300000000000000000000000000000000000000000000000000000500000000000000010000010000000000000000060000000000000b00000000000000000000
-
-86004300000000000000000000000000000000000000000000000000000500000000000000010000010000000000000000060000000000000b00000000000000000000
-
-86004300000000000000000000000000000000000000000000000000000500000000000000010000010000000000000000060000000000000000000000000000000000
-
+1 e4
 ...
 ```
 
 TODO
 
-- Make connection more stable (pair if not paired)
-- Create node module og publish to npm
-- Contact DGT to get the full spec
-  - Is it possible to read out all games ?
-  - Is there a algorithm to validate illigal moves etc
-  - Clock integration ?
+- Make webscoket client with SignalR to connect to server
