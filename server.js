@@ -1,10 +1,21 @@
+const WebSocket = require("ws");
+
+const SERVER_URI = process.env.SOCKET_SERVER_URI;
+if (!SERVER_URI) {
+  console.error("No server socket uri is provided (SOCKET_SERVER_URI)");
+  process.exit(22);
+}
+
 const DGTBoard = require("./Board");
 const board = new DGTBoard();
 
-board.on("data", data => {
-  console.log(data);
+const socket = new WebSocket(SERVER_URI);
+socket.on("open", connection => {
+  board.on("data", data => {
+    connection.send(data);
+  });
 });
 
-board.on("move", move => {
-  console.log(move);
+process.on("uncaughtException", err => {
+  console.log("Caught unhandled exception: " + err);
 });
