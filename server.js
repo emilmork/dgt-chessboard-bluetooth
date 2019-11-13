@@ -1,30 +1,39 @@
-//const WebSocket = require("ws");
-
-// const SERVER_URI = process.env.SOCKET_SERVER_URI;
-// if (!SERVER_URI) {
-//   console.error("No server socket uri is provided (SOCKET_SERVER_URI)");
-//   process.exit(22);
-// }
-
-// const DGTBoard = require("./BoardOld");
-// const board = new DGTBoard();
-
-// const socket = new WebSocket(SERVER_URI);
-// socket.on("open", connection => {i
-//   board.on("data", data => {
-//     connection.send(data);
-//   });
-// });
-
-const DGTBoard = require("./Board");
-const board = new DGTBoard();
+const signalR = require("@aspnet/signalr");
 const getGame = require("./chessLogic/game");
+const DGTBoard = require("./connection/Board");
 
-board.on("data", data => {
-  const currentGame = getGame(data);
-  console.log(currentGame.pgn());
-});
+const board = new DGTBoard();
+
+// Url and channel for signalR socket server
+const WEBSOCKET_SERVER_URI =
+  process.env.ENPASSANT_SOCKET_SERVER_URL || "https://localhost";
+const WEBSCOKET_SERVER_CHANNEL =
+  process.env.ENPASSANT_SOCKET_CHANNEL || "update";
+
+if (process.env.NODE_ENV === "production") {
+  let connection = new signalR.HubConnectionBuilder()
+    .withUrl(`${WEBSOCKET_SERVER_URI}/${WEBSCOKET_SERVER_CHANNEL}`)
+    .build();
+
+  connection.on("send", data => {
+    console.log(data);
+  });
+
+  connection.start().then(() => {
+    board.on("data", boardObservation => {
+      const currentGame = getGame(boardObservation);
+      connection.invoke("update", {
+        pgn: currentGame.pgn()
+      });
+    });
+  });
+} else {
+  board.on("data", boardObservation => {
+    const currentGame = getGame(boardObservation);
+    console.log(currentGame.pgn());
+  });
+}
 
 process.on("uncaughtException", err => {
-  console.log("Caught unhandled exception: " + err);
+  console.error("Caught unhandled exception: " + err);
 });

@@ -37,6 +37,9 @@ function DGTBTConnection() {
   // Initiate reading data from the board
   function init() {
     dgtConnection.on("connected", con => {
+      // Start reading buffer
+      readBuffer();
+
       // Reset buffer
       _self._buffer = Buffer.alloc(0);
 
@@ -55,7 +58,6 @@ function DGTBTConnection() {
   }
 
   init();
-  readBuffer();
 }
 
 util.inherits(DGTBTConnection, EventEmitter);

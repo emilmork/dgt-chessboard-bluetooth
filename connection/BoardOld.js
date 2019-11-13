@@ -3,7 +3,7 @@ module.exports = Board;
 const util = require("util");
 const EventEmitter = require("events").EventEmitter;
 const chess = require("chess.js");
-const DGTConnection = require("./connection/DGTConnection");
+const DGTConnection = require("./DGTConnection");
 const protocol = require("./protocol.json");
 const dgtConnection = new DGTConnection();
 
