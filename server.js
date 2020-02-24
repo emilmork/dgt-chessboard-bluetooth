@@ -6,7 +6,7 @@ const board = new DGTBoard();
 
 // Url and channel for signalR socket server
 const WEBSOCKET_SERVER_URI = "https://enpassanthub.azurewebsites.net";
-const WEBSCOKET_SERVER_CHANNEL = "update";
+const WEBSCOKET_SERVER_CHANNEL = "chessEvents";
 const SERIAL_PATH = process.env.SERIAL_PATH;
 
 if (!SERIAL_PATH) {
