@@ -5,20 +5,12 @@ const DGTBoard = require("./connection/Board");
 const board = new DGTBoard();
 
 // Url and channel for signalR socket server
-const WEBSOCKET_SERVER_URI =
-  process.env.ENPASSANT_SOCKET_SERVER_URL || "https://localhost";
-const WEBSCOKET_SERVER_CHANNEL =
-  process.env.ENPASSANT_SOCKET_CHANNEL || "update";
+const WEBSOCKET_SERVER_URI = "https://enpassanthub.azurewebsites.net";
+const WEBSCOKET_SERVER_CHANNEL = "update";
 const SERIAL_PATH = process.env.SERIAL_PATH;
 
 if (!SERIAL_PATH) {
   console.warn("Missing SERIAL_PATH env");
-}
-if (WEBSOCKET_SERVER_URI) {
-  console.warn("Missing WEBSOCKET_SERVER_URI env");
-}
-if (WEBSCOKET_SERVER_CHANNEL) {
-  console.warn("Missing WEBSCOKET_SERVER_CHANNEL env");
 }
 
 if (process.env.NODE_ENV === "production") {
