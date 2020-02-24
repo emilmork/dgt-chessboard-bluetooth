@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
   connection.start().then(() => {
     board.on("data", boardObservation => {
       const currentGame = getGame(boardObservation);
-      connection.invoke("update", {
+      connection.invoke("PushBoardState", {
         pgn: currentGame.pgn()
       });
     });
