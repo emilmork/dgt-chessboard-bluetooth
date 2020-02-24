@@ -1,7 +1,7 @@
 const protocol = require("./protocol.json");
 const EventEmitter = require("events").EventEmitter;
 const util = require("util");
-const DGTConnection = require("./DGTConnection");
+const DGTConnection = require("./DGTConnectionSerial");
 const dgtConnection = new DGTConnection();
 
 function buffersAreEqual(buf1, buf2) {

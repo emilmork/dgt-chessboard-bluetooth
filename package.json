@@ -10,9 +10,11 @@
   "license": "MIT",
   "dependencies": {
     "@aspnet/signalr": "^1.1.4",
+    "@serialport/parser-readline": "^8.0.6",
     "buffer-splice": "^1.0.0",
     "chess.js": "^0.10.2",
-    "node-bluetooth": "^1.2.6"
+    "node-bluetooth": "^1.2.6",
+    "serialport": "^8.0.7"
   },
   "devDependencies": {
     "jest": "^24.9.0"

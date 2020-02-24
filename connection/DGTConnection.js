@@ -65,7 +65,7 @@ function DGTConnection() {
           dgtBoard.services[0].channel,
           (err, connection) => {
             if (err) {
-              console.log("Could not connect to board. Retry", err);
+              console.log("Could not connect to board. Retry", err.message);
               setTimeout(() => {
                 findAndConnectPairedDevices();
               }, 3000);
